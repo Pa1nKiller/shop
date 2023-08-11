@@ -3,6 +3,15 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Shop from "./components/Shop";
 
+function getIndex(value, arr, prop) {
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i][prop] === value) {
+            return i;
+        }
+    }
+    return -1; //to handle the case where the value doesn't exist
+}
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -68,11 +77,12 @@ class App extends React.Component {
             ]
         }
         this.addToOrder = this.addToOrder.bind(this)
+        this.removeFromOrder = this.removeFromOrder.bind(this)
     }
     render() {
         return (
             <div className="wrapper" >
-                <Header orders={this.state.orders} />
+                <Header orders={this.state.orders} onRemove={this.removeFromOrder} />
                 <main className="main">
                     <Shop items={this.state.items} onAdd={this.addToOrder} />
                 </main>
@@ -83,6 +93,13 @@ class App extends React.Component {
 
     addToOrder(item) {
         this.setState({ orders: [...this.state.orders, item] })
+    }
+
+    removeFromOrder(item) {
+        const i = getIndex(item.id, this.state.orders, 'id');
+        const newOrders = [].concat(this.state.orders);
+        newOrders.splice(i.index, 1);
+        this.setState({ orders: newOrders });
     }
 }
 

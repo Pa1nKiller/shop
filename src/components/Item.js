@@ -12,7 +12,7 @@ export class Item extends Component {
                         {this.props.item.price}
                         <LuRussianRuble />
                     </p>
-                    <div className='btn-add' onClick={() => this.props.onAdd(this.props.item)}>+</div>
+                    <div className='btn noselect' onClick={() => this.props.onAdd(this.props.item)}>+</div>
                 </div>
 
             </div>

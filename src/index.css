@@ -71,6 +71,15 @@ h6 {
   padding: 0px 15px;
 }
 
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
 .wrapper {
   min-height: 100vh;
   margin: 0 auto;
@@ -98,26 +107,46 @@ h6 {
   align-items: center;
   justify-content: space-between;
   position: relative;
+
+  border-bottom: 1px solid #000;
+}
+
+.nav__binBlock {
+  cursor: pointer;
+  position: relative;
+
+  padding: .2rem .4rem;
+}
+
+.nav__counter {
+  position: absolute;
+  bottom: 0rem;
+  right: 0rem;
+
+
+  line-height: 1rem;
+  text-align: center;
+  color: #c18484;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .nav__bin {
   cursor: pointer;
 }
 
-.nav__bin:hover {
-  color: #9f4343
+.nav__binBlock:hover .nav__bin {
+  color: #9f4343;
 }
 
-.nav__bin.active {
-  color: #9f4343
+.nav__binBlock.active .nav__bin {
+  color: #9f4343;
 }
 
-.header__shop {
+.header__orders {
   position: absolute;
-  right: 10rem;
-  top: 7.5rem;
-  background-color: #7e7e7e;
-
+  right: 0rem;
+  top: 124px;
   z-index: 1;
 }
 
@@ -186,7 +215,7 @@ h6 {
   transform: scale(1.05);
 }
 
-.btn-add {
+.btn {
   cursor: pointer;
 
   display: inline-block;
@@ -201,7 +230,7 @@ h6 {
   transition: all 0.3s ease;
 }
 
-.btn-add:hover {
+.btn:hover {
   background-color: #8a3b3b;
   transform: scale(1.1) translateY(-0.3125rem);
 }
@@ -227,20 +256,25 @@ h2 {
   align-items: center;
   padding: 1.25rem;
 
+  background-color: #754949;
 }
 
 .order-item__price {}
+
+.order-item__cross {}
 
 .order-item__img {
   margin-right: .75rem;
 
   height: 7rem;
   width: 7rem;
-  background-image: '../public/img/1.jpg';
 }
 
 .order-item__block-for-active {
   display: flex;
+
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+
+  margin-top: 1rem;
 }

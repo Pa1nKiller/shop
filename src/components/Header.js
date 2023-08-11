@@ -11,17 +11,24 @@ export default function Header(props) {
             <div className='header__container'>
                 <a href="#"><img src={logo} alt='asd'></img></a>
                 <ul className='header__nav nav'>
-                    <FaShoppingCart onClick={() => setCartOpen(cartOpen = !cartOpen)} className={
-                        `nav__bin
-                        ${cartOpen && 'active'}`
-                    } />
+                    <div onClick={() => setCartOpen(cartOpen = !cartOpen)} className={
+                        `nav__binBlock $ {cartOpen && 'active'}`}>
+                        <FaShoppingCart className='nav__bin' //onClick={() => setCartOpen(cartOpen = !cartOpen)} className={
+                            //`nav__bin
+                            //${cartOpen && 'active'}`
+                        /*}*/ />
+                        {
+                            Boolean(props.orders.length) && <span className='nav__counter noselect'>{props.orders.length}</span>
+                        }
+
+                    </div>
                     <li className="nav__item">About adidas</li>
                 </ul>
 
                 {cartOpen && (
-                    <div className="header__shop">
+                    <div className="header__orders orders">
                         {props.orders.map(el => (
-                            <Order key={el.id} item={el} />
+                            <Order key={el.id} item={el} onRemove={props.onRemove} />
                         ))}
                     </div>
                 )}
