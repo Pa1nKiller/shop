@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import logo from '../img/adidas.png'
 import { FaShoppingCart } from 'react-icons/fa';
+import Order from './Order';
 
-export default function Header() {
+export default function Header(props) {
     let [cartOpen, setCartOpen] = useState(false);
 
     return (
@@ -19,7 +20,9 @@ export default function Header() {
 
                 {cartOpen && (
                     <div className="header__shop">
-
+                        {props.orders.map(el => (
+                            <Order key={el.id} item={el} />
+                        ))}
                     </div>
                 )}
             </div>

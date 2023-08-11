@@ -8,7 +8,7 @@ export class Shop extends Component {
                 <div className="shop__container">
                     <div className="shop__items">
                         {this.props.items.map(el => (
-                            <Item key={el.id} item={el} />
+                            <Item key={el.id} item={el} onAdd={this.props.onAdd} />
                         ))}
                     </div>
                 </div>

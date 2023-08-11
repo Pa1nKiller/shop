@@ -114,12 +114,9 @@ h6 {
 
 .header__shop {
   position: absolute;
-  right: 0;
-  bottom: -25rem;
-  background-color: #000;
-
-  width: 25rem;
-  height: 25rem;
+  right: 10rem;
+  top: 7.5rem;
+  background-color: #7e7e7e;
 
   z-index: 1;
 }
@@ -222,4 +219,28 @@ h2 {
 
 .footer {
   padding: 1.25rem 0;
+}
+
+/*************************************/
+.order-item {
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+
+}
+
+.order-item__price {}
+
+.order-item__img {
+  margin-right: .75rem;
+
+  height: 7rem;
+  width: 7rem;
+  background-image: '../public/img/1.jpg';
+}
+
+.order-item__block-for-active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
