@@ -3,6 +3,16 @@ import logo from '../img/adidas.png'
 import { FaShoppingCart } from 'react-icons/fa';
 import Order from './Order';
 
+function print(orders, onRemove) {
+    return (
+        <div className="header__orders orders">
+            {orders.map(el => (
+                <Order key={el.id} item={el} onRemove={onRemove} />
+            ))}
+        </div>
+    );
+}
+
 export default function Header(props) {
     let [cartOpen, setCartOpen] = useState(false);
 
@@ -24,15 +34,16 @@ export default function Header(props) {
                     </div>
                     <li className="nav__item">About adidas</li>
                 </ul>
-
                 {cartOpen && (
-                    <div className="header__orders orders">
-                        {props.orders.map(el => (
-                            <Order key={el.id} item={el} onRemove={props.onRemove} />
-                        ))}
-                    </div>
-                )}
+                    Boolean(props.orders.length) ?
+                        print(props.orders, props.onRemove)
+                        :
+                        setCartOpen(cartOpen = !cartOpen)
+                )
+                }
             </div>
         </header>
     )
 }
+
+

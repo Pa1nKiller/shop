@@ -192,6 +192,10 @@ h6 {
   text-align: justify;
 }
 
+.shop-item__img {
+  max-height: 18.75rem;
+}
+
 .shop-item__price {
   display: flex;
   align-items: center;
