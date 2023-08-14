@@ -112,7 +112,7 @@ class App extends React.Component {
             this.setState({ orders: this.state.orders });
         } else {
             const newOrders = [].concat(this.state.orders);
-            newOrders.splice(i.index, 1);
+            newOrders.splice(i, 1);
             this.setState({ orders: newOrders });
         }
     }
