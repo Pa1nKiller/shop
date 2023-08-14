@@ -3,13 +3,13 @@ import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Shop from "./components/Shop";
 
-function getIndex(value, arr, prop) {
+export function getIndex(value, arr, prop) {
     for (var i = 0; i < arr.length; i++) {
         if (arr[i][prop] === value) {
             return i;
         }
     }
-    return -1; //to handle the case where the value doesn't exist
+    return -1;
 }
 
 class App extends React.Component {
@@ -30,7 +30,8 @@ class App extends React.Component {
                             Материал стельки	текстиль
                             Пол	Мужской`,
                     category: "Кроссовки",
-                    price: 7439
+                    price: 7439,
+                    count: 1
                 },
                 {
                     id: 2,
@@ -44,7 +45,8 @@ class App extends React.Component {
                             Материал стельки	текстиль
                             Пол	Мужской`,
                     category: "Кроссовки",
-                    price: 8000
+                    price: 8000,
+                    count: 1
                 },
                 {
                     id: 3,
@@ -58,7 +60,8 @@ class App extends React.Component {
                             Материал стельки	текстиль
                             Пол	Мужской`,
                     category: "Кроссовки",
-                    price: 8000
+                    price: 8000,
+                    count: 1
                 },
                 {
                     id: 4,
@@ -72,7 +75,8 @@ class App extends React.Component {
                             Материал стельки	текстиль
                             Пол	Мужской`,
                     category: "Кроссовки",
-                    price: 8000
+                    price: 8000,
+                    count: 1
                 }
             ]
         }
@@ -92,14 +96,25 @@ class App extends React.Component {
     }
 
     addToOrder(item) {
-        this.setState({ orders: [...this.state.orders, item] })
+        const i = getIndex(item.id, this.state.orders, 'id');
+        if (i > -1) {
+            this.state.orders[i].count = this.state.orders[i].count + 1;
+            this.setState({ orders: this.state.orders });
+        } else {
+            this.setState({ orders: [...this.state.orders, item] })
+        }
     }
 
     removeFromOrder(item) {
         const i = getIndex(item.id, this.state.orders, 'id');
-        const newOrders = [].concat(this.state.orders);
-        newOrders.splice(i.index, 1);
-        this.setState({ orders: newOrders });
+        if (item.count > 1 && i > -1) {
+            this.state.orders[i].count = this.state.orders[i].count - 1;
+            this.setState({ orders: this.state.orders });
+        } else {
+            const newOrders = [].concat(this.state.orders);
+            newOrders.splice(i.index, 1);
+            this.setState({ orders: newOrders });
+        }
     }
 }
 

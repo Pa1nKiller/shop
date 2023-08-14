@@ -194,6 +194,11 @@ h6 {
 
 .shop-item__img {
   max-height: 18.75rem;
+  width: 100%;
+
+  -o-object-fit: cover;
+  object-fit: cover;
+  object-position: center;
 }
 
 .shop-item__price {
@@ -262,6 +267,8 @@ h2 {
 
   background-color: #754949;
 }
+
+.order-item__col {}
 
 .order-item__price {}
 

@@ -1,10 +1,13 @@
 import React, { Component } from 'react'
 import { LuRussianRuble } from 'react-icons/lu';
+
+//import img from '../img/1.jpg';
+
 export class Item extends Component {
     render() {
         return (
             <div className='shop__item shop-item'>
-                <img className='shop-item__img' src={"./img/" + this.props.item.img} alt="alt" />
+                <img className='shop-item__img' /*src={img}*/ src={"./img/" + this.props.item.img} alt="alt" />
                 <h2>{this.props.item.title}</h2>
                 <p className='shop-item__desc'>{this.props.item.desc}</p>
                 <div className="shop-item__block-for-active">
