@@ -23,10 +23,7 @@ export default function Header(props) {
                 <ul className='header__nav nav'>
                     <div onClick={() => setCartOpen(cartOpen = !cartOpen)} className={
                         `nav__binBlock $ {cartOpen && 'active'}`}>
-                        <FaShoppingCart className='nav__bin' //onClick={() => setCartOpen(cartOpen = !cartOpen)} className={
-                            //`nav__bin
-                            //${cartOpen && 'active'}`
-                        /*}*/ />
+                        <FaShoppingCart className='nav__bin' />
                         {
                             Boolean(props.orders.length) && <span className='nav__counter noselect'>{props.orders.length}</span>
                         }

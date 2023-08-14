@@ -77,8 +77,36 @@ class App extends React.Component {
                     category: "Кроссовки",
                     price: 8000,
                     count: 1
+                },
+                {
+                    id: 5,
+                    title: "4",
+                    img: "4.jpg",
+                    desc: `adidas`,
+                    category: "Футболки",
+                    price: 3000,
+                    count: 1
+                },
+                {
+                    id: 6,
+                    title: "5",
+                    img: "5.jpg",
+                    desc: `adidas`,
+                    category: "Футболки",
+                    price: 3000,
+                    count: 1
+                },
+                {
+                    id: 7,
+                    title: "6",
+                    img: "6.jpg",
+                    desc: `adidas`,
+                    category: "Футболки",
+                    price: 3000,
+                    count: 1
                 }
-            ]
+            ],
+            filters: [{ id: 1, name: "Всё" }, { id: 2, name: "Кроссовки" }, { id: 3, name: "Футболки" }]
         }
         this.addToOrder = this.addToOrder.bind(this)
         this.removeFromOrder = this.removeFromOrder.bind(this)
@@ -88,7 +116,7 @@ class App extends React.Component {
             <div className="wrapper" >
                 <Header orders={this.state.orders} onRemove={this.removeFromOrder} />
                 <main className="main">
-                    <Shop items={this.state.items} onAdd={this.addToOrder} />
+                    <Shop filters={this.state.filters} items={this.state.items} onAdd={this.addToOrder} />
                 </main>
                 <Footer />
             </div>

@@ -15,7 +15,6 @@ export class Order extends Component {
                             {this.props.item.price * this.props.item.count}
                             <LuRussianRuble />
                         </p>
-
                         <div className='btn noselect' onClick={() => this.props.onRemove(this.props.item)}>-</div>
                     </div>
                     <p className='order-item__col'>
