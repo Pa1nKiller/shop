@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { LuRussianRuble } from 'react-icons/lu';
 import { CSSTransition } from 'react-transition-group';
-//import img from '../img/1.jpg';
 
 export class Order extends Component {
     render() {
@@ -11,7 +10,7 @@ export class Order extends Component {
                 classNames="fade"
                 unmountOnExit>
                 <div className='order-item'>
-                    <img className='order-item__img' /*src={img}*/ src={"./img/" + this.props.item.img} alt="alt" />
+                    <img className='order-item__img' src={"./img/" + this.props.item.img} alt="alt" />
                     <div className="order-item__cross">
                         <h2>{this.props.item.title}</h2>
                         <div className="order-item__block-for-active">

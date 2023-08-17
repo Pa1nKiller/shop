@@ -5,7 +5,7 @@ import Order from './Order';
 import { Link } from "react-router-dom"
 import { CSSTransition } from "react-transition-group"
 
-function print(props) {
+function printOrders(props) {
     if (Boolean(props.orders.length)) {
         return (
             <div className="header__orders">
@@ -14,7 +14,7 @@ function print(props) {
                         <Order key={el.id} item={el} onRemove={props.onRemove} />
                     ))}
                 </div>
-                <Link to={{ pathname: '/buy', state: props.orders }}><button className='btn-buy'>Оплатить</button></Link>
+                <Link to={{ pathname: '/buy' }} state={{ data: props.orders }}><button className='btn-buy'>Оплатить</button></Link>
             </div>
         )
     } else {
@@ -40,21 +40,17 @@ export default function Header(props) {
                         `nav__binBlock $ {cartOpen && 'active'}`}>
                         <FaShoppingCart className='nav__bin' />
                         {
-                            Boolean(props.orders.length) && <span className='nav__counter noselect'>{props.orders.length}</span>
+                            Boolean(props.orders.length) &&
+                            <span className='nav__counter noselect'>{props.orders.length}</span>
                         }
 
                     </div>
                     <li className="nav__item">About adidas</li>
                 </ul>
 
-                <CSSTransition in={cartOpen}
-                    timeout={500}
-                    classNames="orders-anim"
-                    unmountOnExit>
-                    {print(props)}
+                <CSSTransition in={cartOpen} timeout={500} classNames="orders-anim" unmountOnExit>
+                    {printOrders(props)}
                 </CSSTransition>
-
-
             </div>
         </header>
     )

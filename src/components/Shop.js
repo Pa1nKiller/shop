@@ -1,13 +1,11 @@
 import React, { Component } from 'react'
 import Item from './Item'
-//import Filter from './Filter'
-import { CSSTransition } from 'react-transition-group';
 
 export class Shop extends Component {
 
     constructor(props) {
         super(props);
-        this.state = { filter: "Всё" }
+        this.state = { filter: "Всё", products: this.props.items }
         this.selectFilter = this.selectFilter.bind(this)
     }
 
@@ -32,13 +30,8 @@ export class Shop extends Component {
                     </div>
                     <div className="shop__items">
                         {
-                            this.props.items
-                                .filter(el => {
-                                    if (el.category === this.state.filter || this.state.filter === "Всё") {
-                                        return el.showItem = true;
-                                    }
-                                    el.showItem = false;
-                                })
+                            this.state.products
+                                .filter(el => el.category === this.state.filter || this.state.filter === "Всё")
                                 .map((el) => {
                                     return (
                                         <Item

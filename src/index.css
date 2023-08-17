@@ -288,9 +288,7 @@ h2 {
   color: #fff;
 }
 
-.order-item__col {}
 
-.order-item__price {}
 
 .order-item__cross {
   flex: 1.0;
@@ -314,7 +312,6 @@ h2 {
 }
 
 
-.shop__filters {}
 
 .filters {
   display: flex;
