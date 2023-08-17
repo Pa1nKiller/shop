@@ -150,9 +150,22 @@ h6 {
 
 .header__orders {
   position: absolute;
+
+  width: 20rem;
+
+  background-color: #222;
   right: 0rem;
   top: 124px;
   z-index: 1;
+
+  border-radius: 0 0 .3125rem .3125rem;
+
+  padding: .625rem .3125rem;
+}
+
+.orders {
+  max-height: 41.25rem;
+  overflow-y: auto;
 }
 
 .nav {
@@ -272,7 +285,6 @@ h2 {
   align-items: center;
   padding: 1.25rem;
 
-  background-color: #222;
   color: #fff;
 }
 
@@ -283,6 +295,7 @@ h2 {
 .order-item__cross {
   flex: 1.0;
 }
+
 
 .order-item__img {
   margin-right: .75rem;
@@ -321,4 +334,68 @@ h2 {
 
 .filters__item:hover {
   background-color: #444;
+}
+
+.btn-buy {
+  cursor: pointer;
+
+  display: block;
+  margin: 0 auto;
+
+  padding: .625rem;
+  border-radius: .3125rem;
+
+  letter-spacing: .08rem;
+  text-transform: uppercase;
+
+  color: #fff;
+  background-color: #00512c;
+}
+
+/******************************************/
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-out;
+}
+
+.orders-anim-enter {
+  opacity: 0;
+}
+
+.orders-anim-enter-active {
+  opacity: 1;
+  transition: opacity 300ms ease-in;
+}
+
+.orders-anim-exit {
+  opacity: 1;
+}
+
+.orders-anim-exit-active {
+  opacity: 0;
+  transition: opacity 300ms ease-in;
+}
+
+
+
+/******************************************/
+
+.orders__noOrders {
+  color: #fff;
+  padding: .625rem 5px;
+  font-weight: 600;
+  font-size: 1.5rem;
 }

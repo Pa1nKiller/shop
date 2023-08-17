@@ -2,26 +2,41 @@ import React, { useState } from 'react'
 import logo from '../img/adidas.png'
 import { FaShoppingCart } from 'react-icons/fa';
 import Order from './Order';
+import { Link } from "react-router-dom"
+import { CSSTransition } from "react-transition-group"
 
-function print(orders, onRemove) {
-    return (
-        <div className="header__orders orders">
-            {orders.map(el => (
-                <Order key={el.id} item={el} onRemove={onRemove} />
-            ))}
-        </div>
-    );
+function print(props) {
+    if (Boolean(props.orders.length)) {
+        return (
+            <div className="header__orders">
+                <div className="orders">
+                    {props.orders.map(el => (
+                        <Order key={el.id} item={el} onRemove={props.onRemove} />
+                    ))}
+                </div>
+                <Link to={{ pathname: '/buy', state: props.orders }}><button className='btn-buy'>Оплатить</button></Link>
+            </div>
+        )
+    } else {
+        return (
+            <div className="header__orders orders">
+                <p className='orders__noOrders'>Товары пока не добавлены</p>
+                <Link to={{ pathname: '/buy', state: { orders: props.orders } }}><button className='btn-buy'>Оплатить</button></Link>
+            </div>
+        )
+    }
 }
 
+
 export default function Header(props) {
-    let [cartOpen, setCartOpen] = useState(false);
+    const [cartOpen, setCartOpen] = useState(false);
 
     return (
         <header className='header'>
             <div className='header__container'>
                 <a href="#"><img src={logo} alt='asd'></img></a>
                 <ul className='header__nav nav'>
-                    <div onClick={() => setCartOpen(cartOpen = !cartOpen)} className={
+                    <div onClick={() => setCartOpen(!cartOpen)} className={
                         `nav__binBlock $ {cartOpen && 'active'}`}>
                         <FaShoppingCart className='nav__bin' />
                         {
@@ -31,13 +46,15 @@ export default function Header(props) {
                     </div>
                     <li className="nav__item">About adidas</li>
                 </ul>
-                {cartOpen && (
-                    Boolean(props.orders.length) ?
-                        print(props.orders, props.onRemove)
-                        :
-                        setCartOpen(cartOpen = !cartOpen)
-                )
-                }
+
+                <CSSTransition in={cartOpen}
+                    timeout={500}
+                    classNames="orders-anim"
+                    unmountOnExit>
+                    {print(props)}
+                </CSSTransition>
+
+
             </div>
         </header>
     )
